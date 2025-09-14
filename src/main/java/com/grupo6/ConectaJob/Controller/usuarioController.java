@@ -8,32 +8,20 @@ import com.grupo6.ConectaJob.Model.usuario.userTrabalhador; //import de usertrab
 
 
 @RestController
-@RequestMapping("/teste")
-public class testController {
+@RequestMapping("/Usuario")
+public class usuarioController {
     @Autowired
     private UsuarioService usuarioservice;
-    @GetMapping
-    public String HelloWord (){
-        return "Hello Word";
-    }
 
-    @GetMapping("/token")
-    public String testeToken (){
-        return "Hello token";
-    }
-
-    @PostMapping("/Usuario")
-    public String addUsuario (){return "poof";}
-
-    @DeleteMapping("/Usuario")
+    @DeleteMapping
     public String deletar(@RequestParam String cpf){
         usuarioservice.deletarUsuario(cpf);
         return "usuario deletado";}
 
-    @PutMapping("/Usuario")
+    @PutMapping
     public ResponseEntity<Void> atualizartrabalhadorporcpf(@RequestParam String cpf, @RequestBody userTrabalhador trabalhador){
         usuarioservice.atualizartrabalhadorporcpf(cpf, trabalhador);
-    return ResponseEntity.ok().build();
+        return ResponseEntity.ok().build();
     }
 
 }

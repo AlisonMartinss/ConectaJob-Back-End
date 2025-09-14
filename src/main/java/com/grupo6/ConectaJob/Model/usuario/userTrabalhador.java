@@ -18,6 +18,8 @@ public class userTrabalhador implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Integer idade;
+
     private  String cpf;
 
     private  String nome;
@@ -63,6 +65,8 @@ public class userTrabalhador implements UserDetails {
         return id;
     }
 
+    public Integer getidade(){return idade;}
+
     public String getCpf() {
         return cpf;
     }
@@ -90,4 +94,6 @@ public class userTrabalhador implements UserDetails {
     public void setSenha(String senha) {
         this.senha = senha;
     }
+
+    public void setidade(Integer idade) {this.idade = idade;}
 }

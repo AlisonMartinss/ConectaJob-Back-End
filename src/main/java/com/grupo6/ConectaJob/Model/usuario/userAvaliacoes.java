@@ -9,31 +9,37 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.print.DocFlavor;
 
 @Table
-@Entity(name = "avaliaçoes")
+@Entity(name = "avaliacoes")
 @NoArgsConstructor
-public class userAvaliaçoes {
+public class userAvaliacoes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long Id;
 
     private int nota;
-    private String avaliaçao;
+    private String comentario;
+    private String CNPJ;
+    private String Avaliador;
 
     public int getNota() {
         return nota;
+    }
+
+    public void setCNPJ(String CNPJ) {
+        this.CNPJ = CNPJ;
     }
 
     public void setNota(int nota) {
         this.nota = nota;
     }
 
-    public String getAvaliaçao() {
-        return avaliaçao;
+    public String getComentario() {
+        return comentario;
     }
 
-    public void setAvaliaçao(String avaliaçao) {
-        this.avaliaçao = avaliaçao;
+    public void setcomentario(String comentario) {
+        this.comentario = comentario;
     }
 
     public long getId() {
@@ -43,4 +49,18 @@ public class userAvaliaçoes {
     public void setId(long id) {
         Id = id;
     }
+
+    public void setAvaliador(String avaliador) {
+        Avaliador = avaliador;
+    }
+
+    public String getAvaliador(){
+        return Avaliador;
+    }
+
+    public String getCNPJ(){
+        return CNPJ;
+    }
+
 }
+

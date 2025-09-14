@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import com.grupo6.ConectaJob.Model.usuario.userTrabalhador;
+import com.grupo6.ConectaJob.Model.DTO.createTrabalhadorUserDTO;
 
 @Service
 public class UsuarioService{
@@ -17,11 +18,13 @@ public class UsuarioService{
         return usurepositorio.findByCpf(cpf);
     }
 
-    public void deletarUsuario (String cpf){
-        usurepositorio.deleteByCpf(cpf);
+    public boolean deletarUsuario (String cpf){
+        long removidos = usurepositorio.deleteByCpf(cpf);
+        return removidos > 0;
+
     }
 
-    public void atualizartrabalhadorporcpf(String cpf, userTrabalhador trabalhador){
+    public UserDetails atualizartrabalhadorporcpf(String cpf, userTrabalhador trabalhador){
         userTrabalhador perfilantigo = usurepositorio.findEntityByCpf(cpf);
         userTrabalhador perfilatualizado = userTrabalhador.builder()
                 .idade(trabalhador.getidade() != null ? trabalhador.getidade() : perfilantigo.getidade())
@@ -32,6 +35,9 @@ public class UsuarioService{
                 .build();
         usurepositorio.saveAndFlush(perfilatualizado);
 
+        Object createTrabalhadorUserDTO = null;
+        Object TrabalhadorUserDTO1 = createTrabalhadorUserDTO;
+        return (UserDetails) TrabalhadorUserDTO1;
     }
 
 

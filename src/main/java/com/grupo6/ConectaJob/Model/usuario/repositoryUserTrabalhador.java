@@ -5,6 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 public interface repositoryUserTrabalhador extends JpaRepository <userTrabalhador,Long> {
     UserDetails findByCpf(String username);
-    void deleteByCpf(String cpf);
+    long deleteByCpf(String cpf);
     userTrabalhador findEntityByCpf(String cpf);
 }
